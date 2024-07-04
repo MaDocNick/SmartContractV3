@@ -2,6 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import Web3 from 'web3';
 import './App.css';
+import musk from './pictures/Elon_Musk_Colorado_2022_(cropped2).jpg'
+import mark from './pictures/Mark_Zuckerberg_F8_2019_Keynote_(32830578717)_(cropped).jpg'
+import sam from './pictures/Sam_Altman_CropEdit_James_Tamim.jpg'
 
 const contractABI = [
 	{
@@ -344,6 +347,10 @@ function App() {
     }
   };
 
+  const proposalImages = [
+    musk,mark,sam
+  ];
+
   return (
     <div className="App">
       <header className="App-header">
@@ -357,6 +364,7 @@ function App() {
             <div key={index}>
               <h3>{proposal.name}</h3>
               <p>Votes: {proposal.voteCount}</p>
+			  <img src={proposalImages[index]} alt={proposal.name} width="100" height="100" />
               <button onClick={() => vote(index)} disabled={votingCompleted || account === owner ||  votesLeft === 0}>
                 Vote
               </button>
